@@ -32,20 +32,16 @@ export default function CadastroProduto({
   }, []);
 
   const adicionaProduto = async () => {
-    const novoProduto = {
-      nome: nome,
-      preco: preco,
-      estoque: estoque,
-      categoria: categoriaId ? { id: categoriaId } : null,
-    };
-
-    console.log("Enviando Produto:", novoProduto);
-
     try {
       const response = await fetch("http://localhost:4567/produtos", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(novoProduto),
+        body: JSON.stringify({
+          nome: nome,
+          preco: preco,
+          estoque: estoque,
+          categoria: categoriaId ? { id: categoriaId } : null,
+        }),
       });
 
       const data = await response.json();
