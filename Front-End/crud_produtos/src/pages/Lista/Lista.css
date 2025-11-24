@@ -1,0 +1,172 @@
+.lista-container {
+  max-width: 700px;
+  margin: 40px auto;
+  padding: 30px;
+  background-color: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+  font-family: 'Arial', sans-serif;
+}
+
+.title {
+  text-align: center;
+  color: #004d40; 
+  margin-bottom: 25px;
+  border-bottom: 2px solid #e0e0e0;
+  padding-bottom: 10px;
+}
+
+.loading-text, .empty-state, .error-message {
+  text-align: center;
+  padding: 20px;
+  font-style: italic;
+  color: #616161;
+}
+
+.error-message {
+    color: #d32f2f;
+    font-weight: bold;
+    background-color: #ffebee;
+    border-radius: 8px;
+    border: 1px solid #d32f2f;
+}
+
+.loading-spinner {
+  border: 4px solid #f3f3f3;
+  border-top: 4px solid #004d40; 
+  border-radius: 50%;
+  width: 30px;
+  height: 30px;
+  margin: 15px auto;
+}
+
+.product-list { 
+  list-style: none;
+  padding: 0;
+}
+
+.product-item { 
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 20px;
+  margin-bottom: 10px;
+  background-color: #f7f9fc; 
+  border-radius: 8px;
+  border-left: 5px solid #004d40; 
+}
+
+.product-item:hover {
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.08);
+}
+
+.view-mode {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
+
+.product-info { 
+  display: flex;
+  flex-direction: column;
+}
+
+.product-name { 
+  font-weight: 600;
+  color: #333;
+  font-size: 1.1em;
+}
+
+.product-price { 
+  color: #2e7d32; 
+  font-size: 0.95em;
+  font-weight: bold;
+  margin-top: 3px;
+}
+
+.actions {
+  display: flex;
+  gap: 10px;
+}
+
+.btn {
+  padding: 8px 15px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: bold;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.btn-edit {
+  background-color: #ffb300; 
+  color: #333;
+}
+.btn-edit:hover {
+  background-color: #ffc107;
+}
+
+.btn-delete {
+  background-color: #e53935; 
+  color: white;
+}
+.btn-delete:hover {
+  background-color: #f44336;
+}
+
+.edit-mode {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    width: 100%;
+}
+
+.input-field {
+  padding: 8px 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  flex-grow: 1; 
+}
+
+.btn-save {
+  background-color: #4CAF50;
+  color: white;
+  min-width: 80px;
+}
+.btn-save:hover {
+  background-color: #66bb6a;
+}
+
+.btn-cancel {
+    background-color: #9e9e9e;
+    color: white;
+    min-width: 80px;
+}
+.btn-cancel:hover {
+    background-color: #bdbdbd;
+}
+
+.product-info { 
+  display: flex;
+  flex-direction: column;
+}
+
+.product-name { 
+  font-weight: 600;
+  color: #333;
+  font-size: 1.1em;
+}
+
+.product-details { 
+  color: #546e7a; 
+  font-size: 0.9em;
+  margin-top: 3px;
+}
+
+.edit-mode {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    width: 100%;
+}
