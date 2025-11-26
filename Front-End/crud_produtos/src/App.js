@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Routes, Route} from "react-router-dom";
 import CadastroProduto from "./pages/CadastroProduto/CadastroProduto";
+import CadastroCategoria from "./pages/CadastroCategoria/CadastroCategoria";
 import Lista from "./pages/Lista/Lista";
 import Home from "./pages/Home/Home";
 
@@ -16,7 +17,7 @@ function App() {
       />
       <Route 
           path="/categoria" 
-          element={<CadastroProduto products={products} setProducts={setProducts} />} 
+          element={<CadastroCategoria />} 
       />
       <Route 
           path="/lista" 
