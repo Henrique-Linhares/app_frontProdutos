@@ -2,13 +2,13 @@
     display: flex;
     flex-direction: column;
     min-height: 100vh;
-    background-color: #e8eaf6; 
+    background-color: #e8eaf6;
     font-family: 'Arial', sans-serif;
     color: #333;
 }
 
 .home-header {
-    background-color: #004d40; 
+    background-color: #004d40;
     color: white;
     padding: 40px 20px;
     text-align: center;
@@ -28,7 +28,7 @@
 }
 
 .main-content {
-    flex-grow: 1; 
+    flex-grow: 1;
     padding: 40px 20px;
     max-width: 1200px;
     margin: 0 auto;
@@ -37,7 +37,7 @@
 
 .main-content h2 {
     text-align: center;
-    color: #1a237e; 
+    color: #1a237e;
     margin-bottom: 30px;
     font-weight: 600;
 }
@@ -62,9 +62,17 @@
     box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
 }
 
-.card-register { border-top-color: #4CAF50; }
-.card-list { border-top-color: #FFC107; }    
-.card-category { border-top-color: #03A9F4; } 
+.card-register {
+    border-top-color: #4CAF50;
+}
+
+.card-list {
+    border-top-color: #FFC107;
+}
+
+.card-category {
+    border-top-color: #03A9F4;
+}
 
 .action-card h3 {
     color: #333;
@@ -82,7 +90,7 @@
     padding: 10px 20px;
     border: none;
     border-radius: 6px;
-    background-color: #1a237e; 
+    background-color: #1a237e;
     color: white;
     font-weight: bold;
     cursor: pointer;

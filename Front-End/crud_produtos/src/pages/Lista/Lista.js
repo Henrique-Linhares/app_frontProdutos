@@ -9,9 +9,9 @@ export default function Lista({ products, setProducts }) {
   const [editingId, setEditingId] = useState(null);
   const [newName, setNewName] = useState("");
   const [newPrice, setNewPrice] = useState(0);
-  const [newEstoque, setNewEstoque] = useState(0); 
+  const [newEstoque, setNewEstoque] = useState(0);
 
-  async function loadProducts() {
+  async function carregaProdutos() {
     setLoading(true);
     setError(null);
     try {
@@ -34,7 +34,7 @@ export default function Lista({ products, setProducts }) {
   }
 
   useEffect(() => {
-    loadProducts();
+    carregaProdutos();
   }, [setProducts]);
 
   const handleSave = async (productToUpdate) => {
@@ -45,7 +45,7 @@ export default function Lista({ products, setProducts }) {
       nome: newName,
       preco: parseFloat(newPrice),
       estoque: parseInt(newEstoque),
-      categoria: productToUpdate.categoria, 
+      categoria: productToUpdate.categoria,
     };
 
     try {
@@ -76,7 +76,7 @@ export default function Lista({ products, setProducts }) {
     setEditingId(product.id);
     setNewName(product.nome);
     setNewPrice(product.preco);
-    setNewEstoque(product.estoque); 
+    setNewEstoque(product.estoque);
   };
 
   const handleDelete = async (id) => {
@@ -119,7 +119,7 @@ export default function Lista({ products, setProducts }) {
         <p className="error-message">{error}</p>
         <button
           className="btn btn-edit"
-          onClick={loadProducts}
+          onClick={carregaProdutos}
           style={{ marginTop: "10px" }}
         >
           Tentar Novamente
@@ -186,11 +186,10 @@ export default function Lista({ products, setProducts }) {
                       {product.preco
                         ? product.preco.toFixed(2).replace(".", ",")
                         : "N/A"}
-                       | Estoque: {product.estoque} | Categoria: 
+                      | Estoque: {product.estoque} | Categoria:
                       {product.categoria
                         ? product.categoria.nome
                         : "Sem Categoria"}
-                      
                     </span>
                   </span>
                   <div className="actions">
@@ -198,7 +197,7 @@ export default function Lista({ products, setProducts }) {
                       className="btn btn-edit"
                       onClick={() => handleEdit(product)}
                     >
-                        Editar
+                      Editar
                     </button>
                     <button
                       className="btn btn-delete"

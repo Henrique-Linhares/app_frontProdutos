@@ -110,7 +110,6 @@ export default function GerenciadorCategoria() {
       const response = await fetch(`${API_BASE_URL}/${id}`, {
         method: "DELETE",
       });
-      
 
       if (response.status === 409) {
         throw new Error(
