@@ -18,6 +18,15 @@ export default function Home() {
                 <h2>O que você gostaria de fazer hoje?</h2>
                 
                 <div className="card-grid">
+
+                       <div 
+                        className="action-card card-category" 
+                        onClick={() => navigate('/categoria')}
+                    >
+                        <h3>Gerenciar Categorias</h3>
+                        <p>Organize seus produtos em categorias específicas.</p>
+                        <button className="btn-go">Gerenciar</button>
+                    </div>
                     
                     <div 
                         className="action-card card-register" 
@@ -35,15 +44,6 @@ export default function Home() {
                         <h3>Visualizar Estoque</h3>
                         <p>Gerencie, edite ou exclua produtos existentes.</p>
                         <button className="btn-go">Ver Lista Completa</button>
-                    </div>
-
-                    <div 
-                        className="action-card card-category" 
-                        onClick={() => navigate('/categoria')}
-                    >
-                        <h3>Gerenciar Categorias</h3>
-                        <p>Organize seus produtos em categorias específicas.</p>
-                        <button className="btn-go">Gerenciar</button>
                     </div>
                 </div>
             </main>

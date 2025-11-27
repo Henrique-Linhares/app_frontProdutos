@@ -1,34 +1,10 @@
 import React, { useState, useEffect, useCallback } from "react";
+import DeleteModal from "../../components/ModalDelete/DeleteModal.js";
 import "./CadastroCategoria.css";
-import Swal from "sweetalert2";
 
 const API_BASE_URL = "http://localhost:4567/categorias";
 
-const DeleteModal = ({ categoria, confirmar, cancelar }) => (
-  <div className="modal-overlay">
-    <div className="modal-content">
-      <h3 className="modal-title">Confirmar Exclusão</h3>
-      <p className="modal-message">
-        Tem certeza que deseja deletar a categoria:{" "}
-        <span className="font-semibold">{categoria.nome}</span> (ID:{" "}
-        {categoria.id})?
-      </p>
-      <div className="modal-actions">
-        <button onClick={cancelar} className="btn-cancel">
-          Cancelar
-        </button>
-        <button
-          onClick={() => confirmar(categoria.id)}
-          className="btn-delete-confirm"
-        >
-          Deletar
-        </button>
-      </div>
-    </div>
-  </div>
-);
-
-export default function CadastroCategoria() {
+export default function GerenciadorCategoria() {
   const [categorias, setCategorias] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -42,11 +18,6 @@ export default function CadastroCategoria() {
     setError(null);
     try {
       const response = await fetch(API_BASE_URL);
-      Swal.fire({
-              title: "Cadastro realizado com Sucesso!",
-              icon: "success",
-              draggable: true,
-            });
 
       if (!response.ok) {
         throw new Error(`Erro HTTP! Status: ${response.status}`);
@@ -54,11 +25,7 @@ export default function CadastroCategoria() {
       const data = await response.json();
       setCategorias(data);
     } catch (err) {
-       Swal.fire({
-              icon: "error",
-              title: "Erro!",
-              text: "Erro ao cadastrar a categoria!",
-            });
+      setError("Falha ao carregar categorias.");
       setCategorias([]);
     } finally {
       setLoading(false);
@@ -68,6 +35,7 @@ export default function CadastroCategoria() {
   useEffect(() => {
     carregarCategorias();
   }, [carregarCategorias]);
+
   const handleAdicionarCategoria = async (e) => {
     e.preventDefault();
     if (!novoNome.trim()) {
@@ -90,7 +58,9 @@ export default function CadastroCategoria() {
       const novaCategoria = await response.json();
       setCategorias([...categorias, novaCategoria]);
       setNovoNome("");
+      alert("Categoria criada com Sucesso!");
     } catch (err) {
+      alert("Erro: Erro ao criar a categoria!");
       setError("Falha ao cadastrar a categoria.");
     }
   };
@@ -128,17 +98,8 @@ export default function CadastroCategoria() {
         categorias.map((c) => (c.id === id ? dadosAtualizados : c))
       );
       setEditandoId(null);
-       Swal.fire({
-              title: "Categoria Atualizada com Sucesso!",
-              icon: "success",
-              draggable: true,
-            });
     } catch (err) {
-       Swal.fire({
-              icon: "error",
-              title: "Erro!",
-              text: "Erro ao atualizar a categoria!",
-            });
+      setError("Falha ao atualizar a categoria.");
     }
   };
 
@@ -149,23 +110,23 @@ export default function CadastroCategoria() {
       const response = await fetch(`${API_BASE_URL}/${id}`, {
         method: "DELETE",
       });
+      
+
+      if (response.status === 409) {
+        throw new Error(
+          "Não é possível excluir esta categoria pois ela está associada a produtos."
+        );
+      }
+      alert("Categoria deletada com Sucesso!");
 
       if (!response.ok && response.status !== 204) {
         throw new Error(`Falha ao deletar. Status: ${response.status}`);
       }
 
       setCategorias(categorias.filter((c) => c.id !== id));
-       Swal.fire({
-              title: "Categoria deletada com Sucesso!",
-              icon: "success",
-              draggable: true,
-            });
     } catch (err) {
-        Swal.fire({
-              icon: "error",
-              title: "Erro!",
-              text: "Erro ao deletar a categoria!",
-            });
+      alert("Erro ao deletar a categoria!");
+      setError(err.message);
     }
   };
 
@@ -224,7 +185,6 @@ export default function CadastroCategoria() {
                 {categorias.map((categoria) => (
                   <li key={categoria.id} className="category-list-item">
                     {editandoId === categoria.id ? (
-                      /* Modo Edição */
                       <div className="edit-mode-container">
                         <input
                           type="text"

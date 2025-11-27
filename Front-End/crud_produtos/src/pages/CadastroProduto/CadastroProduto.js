@@ -1,6 +1,5 @@
 import "./CadastroProduto.css";
 import { useEffect, useState } from "react";
-import Swal from "sweetalert2";
 
 export default function CadastroProduto({
   produtos,
@@ -47,21 +46,13 @@ export default function CadastroProduto({
 
       const data = await response.json();
       console.log("Produto criado com Sucesso!", data);
-      Swal.fire({
-        title: "Cadastro Realizado com Sucesso!",
-        icon: "success",
-        draggable: true,
-      });
       setNome("");
       setPreco(0);
       setEstoque(0);
       setCategoriaId("");
+      alert("Produto Criado com Sucesso!");
     } catch (error) {
-      Swal.fire({
-        icon: "error",
-        title: "Erro!",
-        text: "Erro ao cadastrar o produto!",
-      });
+      alert("Erro: Erro ao criar o Produto");
       console.error("Erro: Erro ao criar o Produto", error);
     }
   };
