@@ -32,7 +32,7 @@ O Back-End é uma API REST desenvolvida em **Spark Java** que utiliza **JDBC** p
 #### 4.1.1 Pré-Requisitos
 
 - **Java Development Kit (JDK):** Versão 11 ou superior
-- **MySQL Server/MariaDB:** Servidor de banco de dados ativo
+- **MySQL Server:** Servidor de banco de dados ativo
 - **Ambiente de Desenvolvimento Java:** IDE (IntelliJ, Eclipse) ou VS Code com as devidas extensões
 
 #### 4.1.2 Configuração do Banco de Dados
